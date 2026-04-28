@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ancilletta — Portfolio</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --color-bg:        #1C1008;
+        --color-bg-deep:   #110A04;
+        --color-text:      #FFEDAC;
+        --color-accent:    #B5651D;
+        --color-secondary: #6B5D4F;
+        --color-rec:       #8B2E1F;
+
+        --font-serif: 'Cormorant Garamond', Georgia, serif;
+        --font-mono:  'IBM Plex Mono', 'Courier New', monospace;
+      }
+
+      *, *::before, *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        background-color: var(--color-bg);
+        color: var(--color-text);
+        font-family: var(--font-serif);
+      }
+    </style>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/main.css" />
+  </head>
+  <body>
+    <audio id="bg-audio" src="assets/audio/Musica Portfolio.mp4" loop preload="auto"></audio>
+
+    <nav class="nav" role="navigation" aria-label="Navegación principal">
+
+      <!-- Logo -->
+      <a href="#" class="nav__logo" aria-label="Ancilletta — Inicio">
+        <img src="assets/img/Logo PNG transparente.png" alt="Ancilletta">
+      </a>
+
+      <!-- Nav links -->
+      <ul class="nav__links">
+        <li>
+          <a href="#ignacio" class="active">
+            <span class="nav__link-num">01</span>
+            <span class="nav__link-sep">·</span>
+            <span class="nav__link-label">Ignacio Ancilletta</span>
+          </a>
+        </li>
+        <li>
+          <a href="#sobre-mi">
+            <span class="nav__link-num">02</span>
+            <span class="nav__link-sep">·</span>
+            <span class="nav__link-label" data-es="Sobre Mí" data-en="About Me">Sobre Mí</span>
+          </a>
+        </li>
+        <li>
+          <a href="#works">
+            <span class="nav__link-num">03</span>
+            <span class="nav__link-sep">·</span>
+            <span class="nav__link-label" data-es="Grandes Éxitos" data-en="Greatest Hits">Grandes Éxitos</span>
+          </a>
+        </li>
+        <li>
+          <a href="#trabajos">
+            <span class="nav__link-num">04</span>
+            <span class="nav__link-sep">·</span>
+            <span class="nav__link-label" data-es="Trabajos" data-en="Work">Trabajos</span>
+          </a>
+        </li>
+        <li>
+          <a href="#viajes">
+            <span class="nav__link-num">05</span>
+            <span class="nav__link-sep">·</span>
+            <span class="nav__link-label" data-es="Viajes" data-en="Travels">Viajes</span>
+          </a>
+        </li>
+        <li>
+          <a href="#contacto">
+            <span class="nav__link-num">06</span>
+            <span class="nav__link-sep">·</span>
+            <span class="nav__link-label" data-es="Contacto" data-en="Contact">Contacto</span>
+          </a>
+        </li>
+      </ul>
+
+      <!-- Right controls -->
+      <div class="nav__controls">
+
+        <!-- Language toggle -->
+        <div class="nav__lang" role="group" aria-label="Idioma">
+          <button class="nav__lang-opt active" data-lang="es" aria-pressed="true">ES</button>
+          <span class="nav__lang-dot">·</span>
+          <button class="nav__lang-opt" data-lang="en" aria-pressed="false">EN</button>
+        </div>
+
+        <!-- Mute button -->
+        <button class="nav__mute" id="btn-mute" aria-label="Silenciar audio" aria-pressed="false">
+          <span class="nav__mute-icon">
+            <!-- Speaker icon (unmuted) -->
+            <svg viewBox="0 0 24 24" id="icon-sound" aria-hidden="true">
+              <path d="M11 5L6 9H2v6h4l5 4V5z"/>
+              <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+              <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+            </svg>
+            <!-- Muted icon (hidden by default) -->
+            <svg viewBox="0 0 24 24" id="icon-mute" aria-hidden="true" style="display:none;">
+              <path d="M11 5L6 9H2v6h4l5 4V5z"/>
+              <line x1="23" y1="9" x2="17" y2="15"/>
+              <line x1="17" y1="9" x2="23" y2="15"/>
+            </svg>
+          </span>
+          <span class="nav__mute-label">MUTE</span>
+        </button>
+
+        <!-- REC indicator -->
+        <div class="nav__rec" aria-label="Grabando">
+          <span class="nav__rec-dot" aria-hidden="true"></span>
+          <span class="nav__rec-label">REC</span>
+        </div>
+
+      </div>
+    </nav>
+
+    <!-- ═══ SECCIÓN 01 · HERO ═══════════════════════════════════ -->
+    <section id="ignacio" class="hero">
+
+      <!-- A · Etiqueta de cinta -->
+      <p class="hero__tape-label" data-es="◀◀&nbsp;&nbsp;CINTA 01 · LADO A&nbsp;&nbsp;▶▶" data-en="◀◀&nbsp;&nbsp;TAPE 01 · SIDE A&nbsp;&nbsp;▶▶">◀◀&nbsp;&nbsp;CINTA 01 · LADO A&nbsp;&nbsp;▶▶</p>
+
+      <!-- B · TV Sony Trinitron -->
+      <div class="tv" id="hero-tv" role="button" tabindex="0" aria-label="Reproducir showreel">
+        <div class="tv__cabinet">
+          <div class="tv__bezel">
+            <div class="tv__screen">
+              <div class="tv__scanlines" aria-hidden="true"></div>
+              <div class="tv__noise" aria-hidden="true"></div>
+              <span class="tv__play-prompt" aria-hidden="true">▶ PLAY</span>
+              <div class="tv__playing-overlay" aria-hidden="true">
+                SHOWREEL<br>CARGANDO...
+              </div>
+            </div>
+          </div>
+          <div class="tv__bottom-bar">
+            <div class="tv__grille" aria-hidden="true"></div>
+            <div class="tv__brand-plate" aria-hidden="true">SONY · TRINITRON</div>
+            <div class="tv__knobs" aria-hidden="true">
+              <div class="tv__knob"></div>
+              <div class="tv__knob"></div>
+            </div>
+          </div>
+        </div>
+        <div class="tv__stand" aria-hidden="true">
+          <div class="tv__leg"></div>
+          <div class="tv__leg"></div>
+        </div>
+      </div>
+
+      <!-- C · Texto -->
+      <div class="hero__text">
+        <h1 class="hero__name">Ignacio Ancilletta</h1>
+        <p class="hero__role" data-es="Estrategia Digital · Producción Audiovisual · Buenos Aires · 2026" data-en="Digital Strategist · Audiovisual Producer · Buenos Aires · 2026">Estrategia Digital · Producción Audiovisual · Buenos Aires · 2026</p>
+        <p class="hero__tagline" data-es=""El lente que tu marca necesita."" data-en=""The lens your brand needs."">"El lente que tu marca necesita."</p>
+        <div class="hero__tags">
+          <span class="hero__tag" data-es="Estrategia Digital" data-en="Digital Strategy">Estrategia Digital</span>
+          <span class="hero__tag" data-es="Producción Audiovisual" data-en="Audiovisual Production">Producción Audiovisual</span>
+          <span class="hero__tag" data-es="Dirección Creativa" data-en="Creative Direction">Dirección Creativa</span>
+          <span class="hero__tag">Community Manager</span>
+          <span class="hero__tag" data-es="Equipo Propio" data-en="Own Team">Equipo Propio</span>
+        </div>
+        <div class="hero__ctas">
+          <a href="#works" class="btn btn--primary" data-es="▶ Ver Showreel" data-en="▶ See Showreel">▶ Ver Showreel</a>
+          <a href="#works" class="btn btn--outline" data-es="→ Ver Trabajos" data-en="→ See Work">→ Ver Trabajos</a>
+        </div>
+      </div>
+
+      <!-- D · Tape counter lateral -->
+      <div class="hero__tape-counter" aria-hidden="true" data-es="CINTA 01 · LADO A · 00:00" data-en="TAPE 01 · SIDE A · 00:00">CINTA 01 · LADO A · 00:00</div>
+
+      <!-- E · Footer con timecode -->
+      <div class="hero__footer">
+        <span class="hero__footer-left" data-es="◀◀&nbsp;&nbsp;CINTA 01 · LADO A" data-en="◀◀&nbsp;&nbsp;TAPE 01 · SIDE A">◀◀&nbsp;&nbsp;CINTA 01 · LADO A</span>
+        <span class="hero__footer-tc" id="hero-timecode">00:00:00:00</span>
+        <span class="hero__footer-right">
+          <span class="nav__rec-dot"></span>REC · READY
+        </span>
+      </div>
+
+    </section>
+
+    <!-- ═══ SECCIÓN 02 · FICHA TÉCNICA ══════════════════════════ -->
+    <section id="sobre-mi" class="ficha">
+
+      <p class="section__tape-label" data-es="◀◀&nbsp;&nbsp;CINTA 02 · LADO A&nbsp;&nbsp;▶▶" data-en="◀◀&nbsp;&nbsp;TAPE 02 · SIDE A&nbsp;&nbsp;▶▶">◀◀&nbsp;&nbsp;CINTA 02 · LADO A&nbsp;&nbsp;▶▶</p>
+
+      <header class="section__header">
+        <span class="section__num">02</span>
+        <h2 class="section__title" data-es="Ficha Técnica" data-en="About Me">Ficha Técnica</h2>
+        <span class="section__sub" data-es="Sobre Mí" data-en="About Me">Sobre Mí</span>
+      </header>
+
+      <div class="ficha__grid">
+
+        <!-- ── Columna izquierda ── -->
+        <div class="ficha__col-left">
+
+          <!-- Marco diapositiva -->
+          <div class="slide-frame">
+            <div class="slide-frame__corner slide-frame__corner--tl"></div>
+            <div class="slide-frame__corner slide-frame__corner--tr"></div>
+            <div class="slide-frame__corner slide-frame__corner--bl"></div>
+            <div class="slide-frame__corner slide-frame__corner--br"></div>
+            <img src="assets/img/Imagensobremi.jpeg" alt="Ignacio Ancilletta" class="slide-frame__photo">
+          </div>
+
+          <!-- Etiqueta VHS -->
+          <div class="ficha__vhs">
+            <span class="ficha__vhs-name">Ignacio Ancilletta</span>
+            <span class="ficha__vhs-role" data-es="Estrategia Digital · Producción Audiovisual" data-en="Digital Strategist · Audiovisual Producer">Estrategia Digital · Producción Audiovisual</span>
+          </div>
+
+          <!-- Idiomas -->
+          <div class="ficha__langs">
+            <div class="ficha__lang"><span class="ficha__lang-code">ES</span><span class="ficha__lang-label" data-es="Español nativo" data-en="Spanish native">Español nativo</span></div>
+            <div class="ficha__lang"><span class="ficha__lang-code">EN</span><span class="ficha__lang-label" data-es="Inglés nativo" data-en="English native">Inglés nativo</span></div>
+          </div>
+
+        </div>
+
+        <!-- ── Columna derecha ── -->
+        <div class="ficha__col-right">
+
+          <!-- Bio -->
+          <p class="ficha__bio" data-es=""Desarrollo contenido con criterio visual, narrativa clara y foco en resultados. Equipo propio."" data-en=""I develop content with visual criteria, clear narrative and a focus on results. Own team."">"Desarrollo contenido con criterio visual, narrativa clara y foco en resultados. Equipo propio."</p>
+
+          <!-- Datos -->
+          <dl class="ficha__datos">
+            <div class="ficha__dato">
+              <dt data-es="Residencia" data-en="Location">Residencia</dt>
+              <dd>CABA, Buenos Aires</dd>
+            </div>
+            <div class="ficha__dato">
+              <dt data-es="Formación" data-en="Education">Formación</dt>
+              <dd>Torcuato Di Tella · Coder House</dd>
+            </div>
+            <div class="ficha__dato">
+              <dt data-es="Contacto" data-en="Contact">Contacto</dt>
+              <dd>nancilletta@gmail.com</dd>
+            </div>
+            <div class="ficha__dato">
+              <dt data-es="Equipo de Filmación" data-en="Film Equipment">Equipo de Filmación</dt>
+              <dd>Lumix S5II · DJI Neo · DJI Mic 2</dd>
+            </div>
+          </dl>
+
+          <!-- Habilidades -->
+          <h3 class="ficha__section-label" data-es="Habilidades" data-en="Skills">Habilidades</h3>
+          <ul class="ficha__stack">
+            <li><span class="ficha__stack-name">Adobe Premiere Pro</span><span class="ficha__stack-dots" aria-label="5 de 5">●●●●●</span></li>
+            <li><span class="ficha__stack-name">Canva Pro</span><span class="ficha__stack-dots" aria-label="5 de 5">●●●●●</span></li>
+            <li><span class="ficha__stack-name">Adobe Photoshop</span><span class="ficha__stack-dots" aria-label="4 de 5">●●●●<span class="ficha__dot-empty">●</span></span></li>
+            <li><span class="ficha__stack-name">Adobe Illustrator</span><span class="ficha__stack-dots" aria-label="4 de 5">●●●●<span class="ficha__dot-empty">●</span></span></li>
+            <li><span class="ficha__stack-name">CapCut</span><span class="ficha__stack-dots" aria-label="4 de 5">●●●●<span class="ficha__dot-empty">●</span></span></li>
+            <li><span class="ficha__stack-name">Claude / Claude Code</span><span class="ficha__stack-dots" aria-label="3 de 5">●●●<span class="ficha__dot-empty">●●</span></span></li>
+            <li><span class="ficha__stack-name">ZOHO CRM</span><span class="ficha__stack-dots" aria-label="3 de 5">●●●<span class="ficha__dot-empty">●●</span></span></li>
+          </ul>
+
+          <!-- Cualidades -->
+          <h3 class="ficha__section-label" data-es="Cualidades" data-en="Qualities">Cualidades</h3>
+          <div class="ficha__skills">
+            <span class="ficha__skill" data-es="Edición Audiovisual" data-en="Audiovisual Editing">Edición Audiovisual</span>
+            <span class="ficha__skill" data-es="Estrategia de Marca" data-en="Brand Strategy">Estrategia de Marca</span>
+            <span class="ficha__skill" data-es="Dirección Creativa" data-en="Creative Direction">Dirección Creativa</span>
+            <span class="ficha__skill" data-es="Gestión de Redes" data-en="Social Media Management">Gestión de Redes</span>
+            <span class="ficha__skill" data-es="Marketing Digital" data-en="Digital Marketing">Marketing Digital</span>
+            <span class="ficha__skill">Community Manager</span>
+            <span class="ficha__skill" data-es="Liderazgo de Proyectos" data-en="Project Leadership">Liderazgo de Proyectos</span>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="ficha__footer">
+        <span data-es="◀◀&nbsp;&nbsp;CINTA 02 · LADO A" data-en="◀◀&nbsp;&nbsp;TAPE 02 · SIDE A">◀◀&nbsp;&nbsp;CINTA 02 · LADO A</span>
+        <span>FICHA TÉCNICA · ANCILLETTA</span>
+        <span><span class="nav__rec-dot"></span>REC · READY</span>
+      </div>
+
+    </section>
+
+    <!-- ═══ SECCIÓN 03 · GREATEST HITS ══════════════════════════ -->
+    <section id="works" class="gh">
+      <p class="section__tape-label" data-es="◀◀&nbsp;&nbsp;CINTA 03 · LADO A&nbsp;&nbsp;▶▶" data-en="◀◀&nbsp;&nbsp;TAPE 03 · SIDE A&nbsp;&nbsp;▶▶">◀◀&nbsp;&nbsp;CINTA 03 · LADO A&nbsp;&nbsp;▶▶</p>
+      <header class="section__header">
+        <span class="section__num">03</span>
+        <h2 class="section__title" data-es="Grandes Éxitos" data-en="Greatest Hits">Grandes Éxitos</h2>
+        <span class="section__sub" data-es="★ Proyectos Destacados" data-en="★ Selected Projects">★ Proyectos Destacados</span>
+      </header>
+
+      <div class="gh__grid">
+
+        <!-- Cassette 01 · TDK -->
+        <article class="cassette" tabindex="0" aria-label="Doble Doble - Community Manager">
+          <div class="cassette__inner">
+            <div class="cassette__face cassette__face--front">
+              <div class="cassette__strip cassette__strip--tdk">
+                <span class="cassette__brand">TDK</span>
+                <span class="cassette__type">SA·X90</span>
+              </div>
+              <div class="cassette__window">
+                <div class="cassette__reel"></div>
+                <div class="cassette__reel"></div>
+              </div>
+              <div class="cassette__label">
+                <span class="cassette__label-num">01</span>
+                <span class="cassette__label-title">Doble Doble</span>
+                <span class="cassette__label-star">★</span>
+                <span class="cassette__label-role" data-es="Community Manager · Asistente de Producción" data-en="Community Manager · Production Assistant">Community Manager · Asistente de Producción</span>
+              </div>
+              <div class="cassette__holes">
+                <div class="cassette__hole"></div>
+                <div class="cassette__hole"></div>
+                <div class="cassette__hole"></div>
+              </div>
+            </div>
+            <div class="cassette__face cassette__face--back">
+              <p class="cassette__back-num">01 · Doble Doble ★</p>
+              <p class="cassette__back-role" data-es="Community Manager · Asistente de Producción" data-en="Community Manager · Production Assistant">Community Manager · Asistente de Producción</p>
+              <div class="cassette__back-media">
+                <p class="cassette__back-text" data-es="Gestión integral de contenido para plataforma NBA en Instagram y TikTok. Redacción de copys, planificación editorial y edición de reels y formatos verticales en un entorno de publicación constante y alta exigencia." data-en="Full content management for an NBA platform on Instagram and TikTok. Copywriting, editorial planning and editing of reels and vertical formats in a high-demand publishing environment.">Gestión integral de contenido para plataforma NBA en Instagram y TikTok. Redacción de copys, planificación editorial y edición de reels y formatos verticales en un entorno de publicación constante y alta exigencia.</p>
+              </div>
+              <p class="cassette__back-flip" data-es="↺ Flip para volver" data-en="↺ Flip to go back">↺ Flip para volver</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Cassette 02 · MAXELL -->
+        <article class="cassette cassette--maxell" tabindex="0" aria-label="Action Coach - Project Manager">
+          <div class="cassette__inner">
+            <div class="cassette__face cassette__face--front">
+              <div class="cassette__strip cassette__strip--maxell">
+                <span class="cassette__brand">MAXELL</span>
+                <span class="cassette__type">UDII·90</span>
+              </div>
+              <div class="cassette__window">
+                <div class="cassette__reel"></div>
+                <div class="cassette__reel"></div>
+              </div>
+              <div class="cassette__label cassette__label--maxell">
+                <span class="cassette__label-num">02</span>
+                <span class="cassette__label-title">Action Coach</span>
+                <span class="cassette__label-star">★</span>
+                <span class="cassette__label-role">Project Manager</span>
+              </div>
+              <div class="cassette__holes">
+                <div class="cassette__hole"></div>
+                <div class="cassette__hole"></div>
+                <div class="cassette__hole"></div>
+              </div>
+            </div>
+            <div class="cassette__face cassette__face--back">
+              <p class="cassette__back-num">02 · Action Coach ★</p>
+              <p class="cassette__back-role">Project Manager</p>
+              <div class="cassette__back-media">
+                <p class="cassette__back-text" data-es="Planificación y gestión de contenidos para ActionCOACH, líder en coaching de PYMES. Coordinación de producción, gestión de campañas en ZOHO y responsable del área comercial y cierre de leads." data-en="Content planning and management for ActionCOACH, leader in SME coaching. Production coordination, ZOHO campaign management and responsible for the commercial area and lead closing.">Planificación y gestión de contenidos para ActionCOACH, líder en coaching de PYMES. Coordinación de producción, gestión de campañas en ZOHO y responsable del área comercial y cierre de leads.</p>
+              </div>
+              <p class="cassette__back-flip" data-es="↺ Flip para volver" data-en="↺ Flip to go back">↺ Flip para volver</p>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <div class="section__footer">
+        <span data-es="◀◀&nbsp;&nbsp;CINTA 03 · LADO A" data-en="◀◀&nbsp;&nbsp;TAPE 03 · SIDE A">◀◀&nbsp;&nbsp;CINTA 03 · LADO A</span>
+        <span>GREATEST HITS · ANCILLETTA</span>
+        <span><span class="nav__rec-dot"></span>REC · READY</span>
+      </div>
+    </section>
+
+    <!-- ═══ SECCIÓN 04 · TRABAJOS ════════════════════════════════ -->
+    <section id="trabajos" class="trabajos">
+      <p class="section__tape-label" data-es="◀◀&nbsp;&nbsp;CINTA 04 · LADO A&nbsp;&nbsp;▶▶" data-en="◀◀&nbsp;&nbsp;TAPE 04 · SIDE A&nbsp;&nbsp;▶▶">◀◀&nbsp;&nbsp;CINTA 04 · LADO A&nbsp;&nbsp;▶▶</p>
+      <header class="section__header">
+        <span class="section__num">04</span>
+        <h2 class="section__title" data-es="Trabajos" data-en="Work">Trabajos</h2>
+        <span class="section__sub" data-es="Índice" data-en="Index">Índice</span>
+      </header>
+
+      <ol class="trabajos__list">
+        <li class="trabajos__item">
+          <div class="trabajos__row"><span class="trabajos__num">01</span><span class="trabajos__sep">·</span><span class="trabajos__name">Paseo Houssay</span><span class="trabajos__role" data-es="Community Manager" data-en="Community Manager">Community Manager</span><span class="trabajos__year">2023–presente</span><span class="trabajos__arrow">↓</span></div>
+          <p class="trabajos__desc" data-es="Manejo integral de redes sociales. Edición, redacción y diseño dentro de las pautas de la marca. 2023–2026." data-en="Full social media management. Editing, copywriting and design within brand guidelines. 2023–2026.">Manejo integral de redes sociales. Edición, redacción y diseño dentro de las pautas de la marca. 2023–2026.</p>
+        </li>
+        <li class="trabajos__item">
+          <div class="trabajos__row"><span class="trabajos__num">02</span><span class="trabajos__sep">·</span><span class="trabajos__name">Hay Motivo</span><span class="trabajos__role" data-es="Filmmaker" data-en="Filmmaker">Filmmaker</span><span class="trabajos__year">2023</span><span class="trabajos__arrow">↓</span></div>
+          <p class="trabajos__desc" data-es="Producción de la película y el espacio &quot;Detrás del Motivo&quot;. Acompañamiento en comunicación y difusión del proyecto." data-en="Production of the film and the space 'Behind the Motive'. Support in communication and project outreach.">Producción de la película y el espacio "Detrás del Motivo". Acompañamiento en comunicación y difusión del proyecto.</p>
+        </li>
+        <li class="trabajos__item">
+          <div class="trabajos__row"><span class="trabajos__num">03</span><span class="trabajos__sep">·</span><span class="trabajos__name">HP "Zeta"</span><span class="trabajos__role" data-es="Runner de Producción" data-en="Production Runner">Runner de Producción</span><span class="trabajos__year">2024</span><span class="trabajos__arrow">↓</span></div>
+          <p class="trabajos__desc" data-es="Runner de producción en el comercial de HP para WolfDen. Asistencia en rodaje y armado de sets con Kohler Studio." data-en="Production runner on the HP commercial for WolfDen. On-set assistance and set building with Kohler Studio.">Runner de producción en el comercial de HP para WolfDen. Asistencia en rodaje y armado de sets con Kohler Studio.</p>
+        </li>
+        <li class="trabajos__item">
+          <div class="trabajos__row"><span class="trabajos__num">04</span><span class="trabajos__sep">·</span><span class="trabajos__name">Memento</span><span class="trabajos__role" data-es="Brandowner" data-en="Brand Owner">Brandowner</span><span class="trabajos__year">2023</span><span class="trabajos__arrow">↓</span></div>
+          <p class="trabajos__desc" data-es="Desarrollo de marca desde cero — identidad visual, contenido, sesiones fotográficas y gestión de Instagram y tienda online." data-en="Brand development from scratch — visual identity, content, photo sessions and management of Instagram and online store.">Desarrollo de marca desde cero — identidad visual, contenido, sesiones fotográficas y gestión de Instagram y tienda online.</p>
+        </li>
+        <li class="trabajos__item">
+          <div class="trabajos__row"><span class="trabajos__num">05</span><span class="trabajos__sep">·</span><span class="trabajos__name">Puro Diseño</span><span class="trabajos__role" data-es="Filmmaker" data-en="Filmmaker">Filmmaker</span><span class="trabajos__year">2025</span><span class="trabajos__arrow">↓</span></div>
+          <p class="trabajos__desc" data-es="Cobertura audiovisual del evento de diseño más importante de Argentina." data-en="Audiovisual coverage of Argentina's most important design event.">Cobertura audiovisual del evento de diseño más importante de Argentina.</p>
+        </li>
+        <li class="trabajos__item">
+          <div class="trabajos__row"><span class="trabajos__num">06</span><span class="trabajos__sep">·</span><span class="trabajos__name">La Cúpula</span><span class="trabajos__role" data-es="Filmmaker · Estudio Pacífica" data-en="Filmmaker · Estudio Pacífica">Filmmaker · Estudio Pacífica</span><span class="trabajos__year">2024</span><span class="trabajos__arrow">↓</span></div>
+          <p class="trabajos__desc" data-es="Producción audiovisual para muestra en Estudio Pacifica. Fotografía, video y edición con corrección de color." data-en="Audiovisual production for an exhibition at Estudio Pacifica. Photography, video and color graded editing.">Producción audiovisual para muestra en Estudio Pacifica. Fotografía, video y edición con corrección de color.</p>
+        </li>
+        <li class="trabajos__item">
+          <div class="trabajos__row"><span class="trabajos__num">07</span><span class="trabajos__sep">·</span><span class="trabajos__name">Eggpertise</span><span class="trabajos__role" data-es="Filmmaker" data-en="Filmmaker">Filmmaker</span><span class="trabajos__year">2025</span><span class="trabajos__arrow">↓</span></div>
+          <p class="trabajos__desc" data-es="Cobertura audiovisual en la Expo Avícola 2025. Filmación, fotografía de productos y entrevistas al equipo técnico." data-en="Audiovisual coverage at Expo Avícola 2025. Filming, product photography and interviews with the technical team.">Cobertura audiovisual en la Expo Avícola 2025. Filmación, fotografía de productos y entrevistas al equipo técnico.</p>
+        </li>
+      </ol>
+
+      <div class="section__footer">
+        <span data-es="◀◀&nbsp;&nbsp;CINTA 04 · LADO A" data-en="◀◀&nbsp;&nbsp;TAPE 04 · SIDE A">◀◀&nbsp;&nbsp;CINTA 04 · LADO A</span>
+        <span>TRABAJOS · ANCILLETTA</span>
+        <span><span class="nav__rec-dot"></span>REC · READY</span>
+      </div>
+    </section>
+
+    <!-- ═══ SECCIÓN 05 · VIAJES ══════════════════════════════════ -->
+    <section id="viajes" class="viajes">
+      <p class="section__tape-label" data-es="◀◀&nbsp;&nbsp;CINTA 05 · LADO A&nbsp;&nbsp;▶▶" data-en="◀◀&nbsp;&nbsp;TAPE 05 · SIDE A&nbsp;&nbsp;▶▶">◀◀&nbsp;&nbsp;CINTA 05 · LADO A&nbsp;&nbsp;▶▶</p>
+      <header class="viajes__header-strip">
+        <div class="viajes__header-strip-left">
+          <span class="section__num">05</span>
+          <span class="viajes__header-sep">·</span>
+          <h2 class="section__title" data-es="La Pelotita Mueve al Mundo" data-en="La Pelotita Moves the World">La Pelotita Mueve al Mundo</h2>
+        </div>
+        <p class="viajes__desc" data-es="Un proyecto cinematográfico que nació de un viaje con mi hermano. La pelota de fútbol como excusa para recorrer el mundo, conectar con la gente y documentarlo todo con criterio visual y narrativa propia." data-en="A cinematographic project born from a trip with my brother. A football as an excuse to travel the world, connect with people and document it all with visual criteria and personal narrative.">Un proyecto cinematográfico que nació de un viaje con mi hermano. La pelota de fútbol como excusa para recorrer el mundo, conectar con la gente y documentarlo todo con criterio visual y narrativa propia.</p>
+        <a href="https://linktr.ee/lapelotitamuevealmundo" class="viajes__linktree" target="_blank" rel="noopener">@lapelotitamuevealmundo</a>
+      </header>
+
+      <div class="viajes__map-wrap">
+        <svg class="viajes__map" viewBox="0 0 1000 560" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mapa de viajes">
+
+          <!-- Fondo -->
+          <rect width="1000" height="560" fill="#0d0704"/>
+
+          <!-- Grilla cartográfica -->
+          <g stroke="#2a1505" stroke-width="0.5" opacity="0.6">
+            <line x1="0" y1="125" x2="1000" y2="125"/>
+            <line x1="0" y1="250" x2="1000" y2="250"/>
+            <line x1="0" y1="375" x2="1000" y2="375"/>
+            <line x1="250" y1="0" x2="250" y2="500"/>
+            <line x1="500" y1="0" x2="500" y2="500"/>
+            <line x1="750" y1="0" x2="750" y2="500"/>
+          </g>
+
+          <!-- Continentes (simplificados) -->
+          <g fill="#2a1505" stroke="#3a1e08" stroke-width="0.8" opacity="0.9">
+            <!-- Norte América -->
+            <path d="M70,85 L108,68 L158,72 L198,102 L212,142 L202,188 L176,212 L136,218 L108,198 L78,172 L62,128 Z"/>
+            <!-- Sur América -->
+            <path d="M198,218 L248,216 L278,238 L288,282 L280,334 L262,368 L238,386 L212,372 L198,342 L188,292 L190,248 Z"/>
+            <!-- Europa -->
+            <path d="M453,118 L492,104 L538,106 L564,124 L558,154 L538,170 L508,172 L478,162 L458,147 Z"/>
+            <!-- África -->
+            <path d="M456,178 L508,168 L556,176 L576,214 L570,274 L554,332 L524,356 L494,358 L464,334 L448,284 L443,228 Z"/>
+            <!-- Asia continental -->
+            <path d="M543,93 L622,73 L746,76 L848,93 L882,133 L872,173 L828,193 L762,204 L696,198 L634,183 L578,163 L543,138 Z"/>
+            <!-- SE Asia -->
+            <path d="M743,248 L796,238 L818,247 L822,268 L800,278 L768,274 Z"/>
+            <path d="M820,253 L857,246 L867,260 L848,272 L820,268 Z"/>
+            <!-- Japón -->
+            <path d="M846,153 L862,146 L874,156 L869,172 L854,175 L844,164 Z"/>
+            <path d="M864,143 L876,138 L884,149 L878,160 L864,156 Z"/>
+            <!-- Australia -->
+            <path d="M788,306 L858,296 L910,323 L920,374 L892,416 L844,421 L803,406 L783,378 L780,340 Z"/>
+          </g>
+
+          <!-- Ruta BUE → Asia activa (línea punteada amarilla) -->
+          <polyline
+            points="240,368 855,378 800,292 778,275 768,265 752,242 760,225 774,192 856,172"
+            fill="none" stroke="#FFEDAC" stroke-width="1.2" stroke-dasharray="5 4" opacity="0.45"
+          />
+          <!-- Ruta Asia → Europa (tenue) -->
+          <polyline
+            points="856,172 528,188 518,180 522,176 518,171 513,164 508,160 502,155 516,149 526,143 530,137 465,185"
+            fill="none" stroke="#FFEDAC" stroke-width="1" stroke-dasharray="4 5" opacity="0.18"
+          />
+
+          <!-- BUE (origen, sin link) -->
+          <g class="viajes__dest" data-dest="buenos-aires">
+            <circle cx="240" cy="368" r="4" fill="#B5651D"/>
+            <text x="240" y="357" class="viajes__label" text-anchor="middle">BUE</text>
+          </g>
+
+          <!-- Destinos ACTIVOS con banderas -->
+          <g class="viajes__markers">
+            <g class="viajes__dest" data-dest="australia" tabindex="0" role="button" aria-label="Australia">
+              <image href="https://flagcdn.com/w40/au.png" x="839" y="368" width="32" height="20" class="viajes__flag" preserveAspectRatio="xMidYMid slice"/>
+              <text x="855" y="395" class="viajes__label" text-anchor="middle">AUS</text>
+            </g>
+            <g class="viajes__dest" data-dest="indonesia" tabindex="0" role="button" aria-label="Indonesia">
+              <image href="https://flagcdn.com/w40/id.png" x="784" y="282" width="32" height="20" class="viajes__flag" preserveAspectRatio="xMidYMid slice"/>
+              <text x="800" y="309" class="viajes__label" text-anchor="middle">IDN</text>
+            </g>
+            <g class="viajes__dest" data-dest="singapur" tabindex="0" role="button" aria-label="Singapur">
+              <image href="https://flagcdn.com/w40/sg.png" x="762" y="265" width="32" height="20" class="viajes__flag" preserveAspectRatio="xMidYMid slice"/>
+              <text x="778" y="258" class="viajes__label" text-anchor="middle">SGP</text>
+            </g>
+            <g class="viajes__dest" data-dest="malasia" tabindex="0" role="button" aria-label="Malasia">
+              <image href="https://flagcdn.com/w40/my.png" x="720" y="256" width="32" height="20" class="viajes__flag" preserveAspectRatio="xMidYMid slice"/>
+              <text x="736" y="249" class="viajes__label" text-anchor="middle">MYS</text>
+            </g>
+            <g class="viajes__dest" data-dest="tailandia" tabindex="0" role="button" aria-label="Tailandia">
+              <image href="https://flagcdn.com/w40/th.png" x="718" y="232" width="32" height="20" class="viajes__flag" preserveAspectRatio="xMidYMid slice"/>
+              <text x="734" y="225" class="viajes__label" text-anchor="middle">THA</text>
+            </g>
+            <g class="viajes__dest" data-dest="vietnam" tabindex="0" role="button" aria-label="Vietnam">
+              <image href="https://flagcdn.com/w40/vn.png" x="756" y="214" width="32" height="20" class="viajes__flag" preserveAspectRatio="xMidYMid slice"/>
+              <text x="772" y="207" class="viajes__label" text-anchor="middle">VNM</text>
+            </g>
+            <g class="viajes__dest" data-dest="china" tabindex="0" role="button" aria-label="China">
+              <image href="https://flagcdn.com/w40/cn.png" x="758" y="182" width="32" height="20" class="viajes__flag" preserveAspectRatio="xMidYMid slice"/>
+              <text x="774" y="175" class="viajes__label" text-anchor="middle">CHN</text>
+            </g>
+            <g class="viajes__dest" data-dest="japon" tabindex="0" role="button" aria-label="Japón">
+              <image href="https://flagcdn.com/w40/jp.png" x="840" y="162" width="32" height="20" class="viajes__flag" preserveAspectRatio="xMidYMid slice"/>
+              <text x="856" y="155" class="viajes__label" text-anchor="middle">JPN</text>
+            </g>
+          </g>
+
+          <!-- Destinos PRÓXIMAMENTE Europa (puntos tenues, sin link) -->
+          <g opacity="0.4">
+            <circle cx="520" cy="160" r="3" fill="none" stroke="#6B5D4F" stroke-width="1"/>
+            <circle cx="465" cy="182" r="3" fill="none" stroke="#6B5D4F" stroke-width="1"/>
+            <circle cx="490" cy="148" r="3" fill="none" stroke="#6B5D4F" stroke-width="1"/>
+            <circle cx="502" cy="135" r="3" fill="none" stroke="#6B5D4F" stroke-width="1"/>
+            <circle cx="515" cy="128" r="3" fill="none" stroke="#6B5D4F" stroke-width="1"/>
+            <circle cx="528" cy="122" r="3" fill="none" stroke="#6B5D4F" stroke-width="1"/>
+            <circle cx="535" cy="115" r="3" fill="none" stroke="#6B5D4F" stroke-width="1"/>
+            <circle cx="506" cy="120" r="3" fill="none" stroke="#6B5D4F" stroke-width="1"/>
+            <circle cx="476" cy="130" r="3" fill="none" stroke="#6B5D4F" stroke-width="1"/>
+            <circle cx="470" cy="120" r="3" fill="none" stroke="#6B5D4F" stroke-width="1"/>
+            <circle cx="462" cy="140" r="3" fill="none" stroke="#6B5D4F" stroke-width="1"/>
+            <circle cx="458" cy="153" r="3" fill="none" stroke="#6B5D4F" stroke-width="1"/>
+            <text x="540" y="175" class="viajes__label viajes__label--soon" text-anchor="start" opacity="0.5" data-es="PRÓXIMAMENTE" data-en="COMING SOON">PRÓXIMAMENTE</text>
+          </g>
+
+        </svg>
+
+        <!-- Tooltip banderas -->
+        <div class="viajes__tooltip" id="viajes-tooltip" aria-hidden="true"></div>
+      </div>
+
+      <div class="section__footer">
+        <span data-es="◀◀&nbsp;&nbsp;CINTA 05 · LADO A" data-en="◀◀&nbsp;&nbsp;TAPE 05 · SIDE A">◀◀&nbsp;&nbsp;CINTA 05 · LADO A</span>
+        <span>VIAJES · @LAPELOTITAMUEVEALMUNDO</span>
+        <span><span class="nav__rec-dot"></span>REC · READY</span>
+      </div>
+    </section>
+
+    <!-- ═══ SECCIÓN 06 · CONTACTO ════════════════════════════════ -->
+    <section id="contacto" class="contacto">
+      <p class="section__tape-label" data-es="◀◀&nbsp;&nbsp;CINTA 06 · LADO A&nbsp;&nbsp;▶▶" data-en="◀◀&nbsp;&nbsp;TAPE 06 · SIDE A&nbsp;&nbsp;▶▶">◀◀&nbsp;&nbsp;CINTA 06 · LADO A&nbsp;&nbsp;▶▶</p>
+      <header class="section__header">
+        <span class="section__num">06</span>
+        <h2 class="section__title" data-es="Contacto" data-en="Contact">Contacto</h2>
+        <span class="section__sub" data-es="Sintonízame" data-en="Tune In">Sintonízame</span>
+      </header>
+
+      <div class="contacto__layout">
+
+        <!-- Boombox -->
+        <div class="boombox" aria-hidden="true">
+          <div class="boombox__body">
+            <div class="boombox__speaker">
+              <div class="boombox__grille">
+                <div class="boombox__grille-dot"></div><div class="boombox__grille-dot"></div><div class="boombox__grille-dot"></div>
+                <div class="boombox__grille-dot"></div><div class="boombox__grille-dot"></div><div class="boombox__grille-dot"></div>
+                <div class="boombox__grille-dot"></div><div class="boombox__grille-dot"></div><div class="boombox__grille-dot"></div>
+                <div class="boombox__grille-dot"></div><div class="boombox__grille-dot"></div><div class="boombox__grille-dot"></div>
+              </div>
+            </div>
+            <div class="boombox__center">
+              <div class="boombox__deck">
+                <div class="boombox__deck-window">
+                  <div class="boombox__deck-reel"></div>
+                  <div class="boombox__deck-reel"></div>
+                </div>
+                <div class="boombox__deck-label">TAPE DECK · AUTO REVERSE</div>
+              </div>
+              <div class="boombox__dial-wrap">
+                <span class="boombox__fm-label">FM</span>
+                <div class="boombox__dial-track">
+                  <div class="boombox__dial-needle" id="dial-needle"></div>
+                  <div class="boombox__dial-marks">
+                    <span>96.1</span><span>100.3</span><span>104.7</span>
+                  </div>
+                </div>
+                <span class="boombox__freq" id="freq-display">96.1 MHz</span>
+              </div>
+              <div class="boombox__freq-btns">
+                <button class="boombox__freq-btn active" data-freq="0" data-mhz="96.1" data-motivo="Proyecto">96.1</button>
+                <button class="boombox__freq-btn" data-freq="1" data-mhz="100.3" data-motivo="Colaboración">100.3</button>
+                <button class="boombox__freq-btn" data-freq="2" data-mhz="104.7" data-motivo="Consulta">104.7</button>
+              </div>
+            </div>
+            <div class="boombox__speaker">
+              <div class="boombox__grille">
+                <div class="boombox__grille-dot"></div><div class="boombox__grille-dot"></div><div class="boombox__grille-dot"></div>
+                <div class="boombox__grille-dot"></div><div class="boombox__grille-dot"></div><div class="boombox__grille-dot"></div>
+                <div class="boombox__grille-dot"></div><div class="boombox__grille-dot"></div><div class="boombox__grille-dot"></div>
+                <div class="boombox__grille-dot"></div><div class="boombox__grille-dot"></div><div class="boombox__grille-dot"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Formulario -->
+        <form class="contacto__form" id="contact-form" novalidate>
+          <div class="contacto__fields">
+            <div class="contacto__field">
+              <label for="c-nombre" class="contacto__label" data-es="Nombre" data-en="Name">Nombre</label>
+              <input type="text" id="c-nombre" name="nombre" class="contacto__input" placeholder="Tu nombre" data-es-ph="Tu nombre" data-en-ph="Your name" required>
+            </div>
+            <div class="contacto__field">
+              <label for="c-email" class="contacto__label">Email</label>
+              <input type="email" id="c-email" name="email" class="contacto__input" placeholder="tu@email.com" required>
+            </div>
+            <div class="contacto__field">
+              <label for="c-motivo" class="contacto__label" data-es="Motivo" data-en="Subject">Motivo</label>
+              <input type="text" id="c-motivo" name="motivo" class="contacto__input" placeholder="Proyecto" readonly>
+            </div>
+            <div class="contacto__field contacto__field--full">
+              <label for="c-mensaje" class="contacto__label" data-es="Mensaje" data-en="Message">Mensaje</label>
+              <textarea id="c-mensaje" name="mensaje" class="contacto__input contacto__textarea" placeholder="Contame sobre tu proyecto..." rows="4"></textarea>
+            </div>
+          </div>
+          <div class="contacto__ctas">
+            <a href="mailto:nancilletta@gmail.com" class="btn btn--primary" id="mailto-btn" data-es="▶ Enviar por email" data-en="▶ Send by email">▶ Enviar por email</a>
+            <a href="https://wa.me/5491124602224" class="btn btn--outline" target="_blank" rel="noopener" id="wa-btn" data-es="✦ Escribime por WhatsApp" data-en="✦ Message me on WhatsApp">✦ Escribime por WhatsApp</a>
+          </div>
+        </form>
+
+      </div>
+
+      <div class="section__footer">
+        <span data-es="◀◀&nbsp;&nbsp;CINTA 06 · LADO A" data-en="◀◀&nbsp;&nbsp;TAPE 06 · SIDE A">◀◀&nbsp;&nbsp;CINTA 06 · LADO A</span>
+        <span>CONTACTO · ANCILLETTA</span>
+        <span><span class="nav__rec-dot"></span>REC · READY</span>
+      </div>
+    </section>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Destinos · La Pelotita Mueve al Mundo</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --color-bg:        #1C1008;
+        --color-bg-deep:   #110A04;
+        --color-text:      #FFEDAC;
+        --color-accent:    #B5651D;
+        --color-secondary: #6B5D4F;
+        --color-rec:       #8B2E1F;
+        --font-serif: 'Cormorant Garamond', Georgia, serif;
+        --font-mono:  'IBM Plex Mono', 'Courier New', monospace;
+      }
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+      html {
+        background-color: var(--color-bg);
+        color: var(--color-text);
+        font-family: var(--font-serif);
+      }
+    </style>
+
+    <link rel="stylesheet" href="css/main.css" />
+  </head>
+  <body>
+
+    <!-- ═══ NAV (misma que index) ═══════════════════════════════ -->
+    <nav class="nav" role="navigation" aria-label="Navegación principal">
+
+      <a href="index.html" class="nav__logo" aria-label="Ancilletta — Inicio">
+        <img src="assets/img/Logo PNG transparente.png" alt="Ancilletta">
+      </a>
+
+      <ul class="nav__links">
+        <li>
+          <a href="index.html#ignacio">
+            <span class="nav__link-num">01</span>
+            <span class="nav__link-sep">·</span>
+            <span class="nav__link-label">Ignacio Ancilletta</span>
+          </a>
+        </li>
+        <li>
+          <a href="index.html#sobre-mi">
+            <span class="nav__link-num">02</span>
+            <span class="nav__link-sep">·</span>
+            <span class="nav__link-label" data-es="Sobre Mí" data-en="About Me">Sobre Mí</span>
+          </a>
+        </li>
+        <li>
+          <a href="index.html#works">
+            <span class="nav__link-num">03</span>
+            <span class="nav__link-sep">·</span>
+            <span class="nav__link-label" data-es="Grandes Éxitos" data-en="Greatest Hits">Grandes Éxitos</span>
+          </a>
+        </li>
+        <li>
+          <a href="index.html#trabajos">
+            <span class="nav__link-num">04</span>
+            <span class="nav__link-sep">·</span>
+            <span class="nav__link-label" data-es="Trabajos" data-en="Work">Trabajos</span>
+          </a>
+        </li>
+        <li>
+          <a href="index.html#viajes" class="active">
+            <span class="nav__link-num">05</span>
+            <span class="nav__link-sep">·</span>
+            <span class="nav__link-label" data-es="Viajes" data-en="Travels">Viajes</span>
+          </a>
+        </li>
+        <li>
+          <a href="index.html#contacto">
+            <span class="nav__link-num">06</span>
+            <span class="nav__link-sep">·</span>
+            <span class="nav__link-label" data-es="Contacto" data-en="Contact">Contacto</span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="nav__controls">
+        <div class="nav__lang" role="group" aria-label="Idioma">
+          <button class="nav__lang-opt active" data-lang="es" aria-pressed="true">ES</button>
+          <span class="nav__lang-dot">·</span>
+          <button class="nav__lang-opt" data-lang="en" aria-pressed="false">EN</button>
+        </div>
+        <div class="nav__rec" aria-label="Grabando">
+          <span class="nav__rec-dot" aria-hidden="true"></span>
+          <span class="nav__rec-label">REC</span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ═══ CONTENIDO ══════════════════════════════════════════ -->
+    <main class="destinos-page">
+
+      <!-- Barra superior -->
+      <div class="destinos__topbar">
+        <span class="destinos__tape-label" data-es="◀◀&nbsp;&nbsp;CINTA 05 · LADO A&nbsp;&nbsp;▶▶" data-en="◀◀&nbsp;&nbsp;TAPE 05 · SIDE A&nbsp;&nbsp;▶▶">◀◀&nbsp;&nbsp;CINTA 05 · LADO A&nbsp;&nbsp;▶▶</span>
+        <a href="index.html#viajes" class="destinos__back" data-es="← Volver al mapa" data-en="← Back to map">← Volver al mapa</a>
+      </div>
+
+      <!-- Contenido renderizado por JS -->
+      <div id="destinos-content"></div>
+
+    </main>
+
+    <!-- Footer fijo -->
+    <footer class="destinos__footer">
+      <span data-es="◀◀&nbsp;&nbsp;CINTA 05 · LADO A" data-en="◀◀&nbsp;&nbsp;TAPE 05 · SIDE A">◀◀&nbsp;&nbsp;CINTA 05 · LADO A</span>
+      <span>LA PELOTITA MUEVE AL MUNDO · @LAPELOTITAMUEVEALMUNDO</span>
+      <span><span class="nav__rec-dot"></span>REC · READY</span>
+    </footer>
+
+    <script>
+      // ── i18n ──────────────────────────────────────────────────
+      let currentLang = 'es';
+      function applyLang(lang) {
+        currentLang = lang;
+        document.documentElement.lang = lang;
+        document.querySelectorAll('[data-es]').forEach(el => {
+          el.textContent = lang === 'es' ? el.dataset.es : el.dataset.en;
+        });
+      }
+
+      // ── Lang toggle ─────────────────────────────────────────
+      const savedLang = localStorage.getItem('lang') || 'es';
+      if (savedLang !== 'es') {
+        const savedBtn = document.querySelector(`.nav__lang-opt[data-lang="${savedLang}"]`);
+        if (savedBtn) {
+          document.querySelectorAll('.nav__lang-opt').forEach(b => { b.classList.remove('active'); b.setAttribute('aria-pressed', 'false'); });
+          savedBtn.classList.add('active');
+          savedBtn.setAttribute('aria-pressed', 'true');
+        }
+        applyLang(savedLang);
+      }
+
+      document.querySelectorAll('.nav__lang-opt').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.nav__lang-opt').forEach(b => {
+            b.classList.remove('active');
+            b.setAttribute('aria-pressed', 'false');
+          });
+          btn.classList.add('active');
+          btn.setAttribute('aria-pressed', 'true');
+          localStorage.setItem('lang', btn.dataset.lang);
+          applyLang(btn.dataset.lang);
+        });
+      });
+
+      // ── Datos de destinos ───────────────────────────────────
+      const DESTINOS = {
+        australia: {
+          nombre:  'Australia',
+          flag:    'au',
+          video:   'assets/video/Australia.mp4',
+          fotos: [
+            { src: 'assets/img/Australia1.jpeg', alt: 'Opera House' },
+            { src: 'assets/img/Australia2.jpeg', alt: 'Byron Bay faro' },
+            { src: 'assets/img/Australia3.jpeg', alt: 'Costa Byron Bay' },
+            { src: 'assets/img/Australia4.jpeg', alt: 'Australian Open' },
+          ],
+        },
+        indonesia: {
+          nombre:  'Indonesia',
+          flag:    'id',
+          video:   'assets/video/Indonesia.mp4',
+          fotos: [
+            { src: 'assets/img/Indonesia1.jpeg', alt: 'Ferry' },
+            { src: 'assets/img/Indonesia2.jpeg', alt: 'Monos Ubud' },
+            { src: 'assets/img/Indonesia3.jpeg', alt: 'Especias Bali' },
+            { src: 'assets/img/Indonesia4.jpeg', alt: 'Arrozales Tegallalang' },
+          ],
+        },
+        singapur: {
+          nombre:  'Singapur',
+          flag:    'sg',
+          video:   'assets/video/Singapur.mp4',
+          fotos: [
+            { src: 'assets/img/Singapur1.jpeg', alt: 'Mezquita Sultan' },
+            { src: 'assets/img/Singapur2.jpeg', alt: 'Marina Bay ArtScience' },
+            { src: 'assets/img/Singapur3.jpeg', alt: 'The Shoppes' },
+            { src: 'assets/img/Singapur4.jpeg', alt: 'Marina Bay Sands noche' },
+          ],
+        },
+        malasia: {
+          nombre:  'Malasia',
+          flag:    'my',
+          video:   'assets/video/Malasia.mp4',
+          fotos: [
+            { src: 'assets/img/Malasia1.jpeg', alt: 'Batu Caves estatua' },
+            { src: 'assets/img/Malasia2.jpeg', alt: 'Batu Caves interior' },
+            { src: 'assets/img/Malasia3.jpeg', alt: 'Partido fútbol' },
+            { src: 'assets/img/Malasia4.jpeg', alt: 'Kuala Lumpur' },
+          ],
+        },
+        tailandia: {
+          nombre:  'Tailandia',
+          flag:    'th',
+          video:   'assets/video/Tailandia.mp4',
+          fotos: [
+            { src: 'assets/img/Tailandia1.jpeg', alt: 'Templo Chiang Mai' },
+            { src: 'assets/img/Tailandia2.jpeg', alt: 'Doi Inthanon' },
+            { src: 'assets/img/Tailandia3.jpeg', alt: 'Flores' },
+            { src: 'assets/img/Tailandia4.jpeg', alt: 'Phi Phi atardecer' },
+          ],
+        },
+        vietnam: {
+          nombre:  'Vietnam',
+          flag:    'vn',
+          video:   'assets/video/Vietnam.mp4',
+          fotos: [
+            { src: 'assets/img/Vietnam1.jpeg', alt: 'Ha Giang ruta' },
+            { src: 'assets/img/Vietnam2.jpeg', alt: 'Templo flores' },
+            { src: 'assets/img/Vietnam3.jpeg', alt: 'Ha Giang drone' },
+            { src: 'assets/img/Vietnam4.jpeg', alt: 'Barcos río' },
+          ],
+        },
+        china: {
+          nombre:  'China',
+          flag:    'cn',
+          video:   'assets/video/China.mp4',
+          fotos: [
+            { src: 'assets/img/China1.jpeg', alt: 'Pagoda Zhang Jiajie' },
+            { src: 'assets/img/China2.jpeg', alt: 'Fenghuang puente' },
+            { src: 'assets/img/China3.jpeg', alt: 'Tianmen escaleras' },
+            { src: 'assets/img/China4.jpeg', alt: 'Fenghuang bote rojo' },
+          ],
+        },
+        japon: {
+          nombre:  'Japón',
+          flag:    'jp',
+          video:   'assets/video/Japón.mp4',
+          fotos: [
+            { src: 'assets/img/Japon1.jpeg', alt: 'Tokyo Tower' },
+            { src: 'assets/img/Japon2.jpeg', alt: 'Takeshita Street' },
+            { src: 'assets/img/Japon3.jpeg', alt: 'Tsukiji lluvia' },
+            { src: 'assets/img/Japon4.jpeg', alt: 'Skyline Tokyo' },
+          ],
+        },
+      };
+
+      // ── Render ──────────────────────────────────────────────
+      function corner(pos) {
+        return `<div class="slide-frame__corner slide-frame__corner--${pos}"></div>`;
+      }
+
+      function renderDestino(d) {
+        const fotosHTML = d.fotos.map(f => `
+          <div class="destinos__foto-frame">
+            ${corner('tl')}${corner('tr')}${corner('bl')}${corner('br')}
+            <img src="${f.src}" alt="${f.alt}" class="destinos__foto-img" loading="lazy">
+          </div>
+        `).join('');
+
+        return `
+          <div class="destinos__hero">
+            <h1 class="destinos__country-name">${d.nombre}</h1>
+            <img
+              src="https://flagcdn.com/w80/${d.flag}.png"
+              alt="Bandera de ${d.nombre}"
+              class="destinos__flag-img"
+            >
+          </div>
+
+          <div class="destinos__content">
+            <div class="destinos__video-wrap">
+              <video
+                class="destinos__video"
+                src="${d.video}"
+                controls
+                preload="metadata"
+              ></video>
+            </div>
+            <div class="destinos__fotos">
+              ${fotosHTML}
+            </div>
+          </div>
+        `;
+      }
+
+      // ── Init ────────────────────────────────────────────────
+      const params = new URLSearchParams(window.location.search);
+      const pais   = params.get('pais');
+      const data   = DESTINOS[pais];
+      const container = document.getElementById('destinos-content');
+
+      if (data) {
+        document.title = `${data.nombre} · La Pelotita Mueve al Mundo`;
+        container.innerHTML = renderDestino(data);
+      } else {
+        container.innerHTML = `
+          <div class="destinos__not-found">
+            DESTINO NO ENCONTRADO<br><br>
+            <a href="index.html#viajes" style="color:var(--color-accent);font-family:var(--font-mono);font-size:10px;letter-spacing:.15em;">← Volver al mapa</a>
+          </div>
+        `;
+      }
+    </script>
+  </body>
+</html>
