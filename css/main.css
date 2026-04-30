@@ -2206,6 +2206,18 @@ section[id] {
     aspect-ratio: 520 / 360;
   }
 
+  .cassette__label {
+    padding: 4px 10px 3px;
+    gap: 4px;
+  }
+
+  .cassette__label-role {
+    font-size: 7px;
+    letter-spacing: 0;
+    margin-left: 0;
+    flex-basis: 100%;
+  }
+
   .cassette__face--back {
     padding: 0.75rem 1rem;
     gap: 6px;
