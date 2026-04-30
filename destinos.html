@@ -42,6 +42,9 @@
         <img src="assets/img/Logo PNG transparente.png" alt="Ancilletta">
       </a>
 
+      <!-- Collapsable mobile: links + controls -->
+      <div class="nav__collapse" id="nav-collapse">
+
       <ul class="nav__links">
         <li>
           <a href="index.html#ignacio">
@@ -98,6 +101,11 @@
           <span class="nav__rec-label">REC</span>
         </div>
       </div>
+
+      </div><!-- /.nav__collapse -->
+
+      <button class="nav__hamburger" id="nav-hamburger" aria-label="Menú" aria-expanded="false">☰</button>
+
     </nav>
 
     <!-- ═══ CONTENIDO ══════════════════════════════════════════ -->
@@ -304,6 +312,32 @@
             <a href="index.html#viajes" style="color:var(--color-accent);font-family:var(--font-mono);font-size:10px;letter-spacing:.15em;">← Volver al mapa</a>
           </div>
         `;
+      }
+      // ── Nav hamburger mobile ────────────────────────────
+      const navEl2        = document.querySelector('.nav');
+      const navHamburger2 = document.getElementById('nav-hamburger');
+      const navCollapseEl2 = document.getElementById('nav-collapse');
+
+      if (navHamburger2 && navCollapseEl2) {
+        navHamburger2.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const isOpen = navEl2.classList.toggle('nav--open');
+          navHamburger2.setAttribute('aria-expanded', String(isOpen));
+        });
+
+        navCollapseEl2.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', () => {
+            navEl2.classList.remove('nav--open');
+            navHamburger2.setAttribute('aria-expanded', 'false');
+          });
+        });
+
+        document.addEventListener('click', (e) => {
+          if (!navEl2.contains(e.target)) {
+            navEl2.classList.remove('nav--open');
+            navHamburger2.setAttribute('aria-expanded', 'false');
+          }
+        });
       }
     </script>
   </body>

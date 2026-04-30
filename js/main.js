@@ -241,6 +241,33 @@ if (tcDisplay) {
   }, Math.floor(1000 / FPS));
 }
 
+// ── Nav hamburger mobile menu ─────────────────────────────
+const navEl        = document.querySelector('.nav');
+const navHamburger = document.getElementById('nav-hamburger');
+const navCollapseEl = document.getElementById('nav-collapse');
+
+if (navHamburger && navCollapseEl) {
+  navHamburger.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isOpen = navEl.classList.toggle('nav--open');
+    navHamburger.setAttribute('aria-expanded', String(isOpen));
+  });
+
+  navCollapseEl.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navEl.classList.remove('nav--open');
+      navHamburger.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!navEl.contains(e.target)) {
+      navEl.classList.remove('nav--open');
+      navHamburger.setAttribute('aria-expanded', 'false');
+    }
+  });
+}
+
 // ── Apply persisted language (AL FINAL — después de todos los const) ──
 const savedLang = localStorage.getItem('lang') || 'es';
 if (savedLang !== 'es') {
