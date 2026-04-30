@@ -2180,6 +2180,11 @@ section[id] {
 
   .ficha__section-label { margin-top: 1rem; }
 
+  .ficha__langs {
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
   /* ── GREATEST HITS 03 ── */
   .gh {
     height: auto;
@@ -2196,7 +2201,7 @@ section[id] {
   }
 
   .cassette {
-    width: min(90vw, 420px);
+    width: min(58.5vw, 273px);
     height: auto;
     aspect-ratio: 520 / 360;
   }
@@ -2267,8 +2272,17 @@ section[id] {
     gap: 1.5rem;
   }
 
-  .boombox__body    { padding: 10px 8px; gap: 8px; }
-  .boombox__speaker { width: 64px; height: 64px; }
+  .boombox__body    { padding: 8px 6px; gap: 6px; max-width: 100%; }
+  .boombox__speaker { width: 46px; height: 46px; }
+  .boombox__grille  { gap: 3px; padding: 5px; }
+  .boombox__grille-dot { width: 4px; height: 4px; }
+  .boombox__center  { min-width: 0; }
+  .boombox__deck    { padding: 6px 8px; }
+  .boombox__deck-reel { width: 18px; height: 18px; }
+  .boombox__dial-wrap { padding: 4px 6px; gap: 5px; }
+  .boombox__fm-label  { font-size: 8px; }
+  .boombox__freq      { font-size: 9px; min-width: 55px; }
+  .boombox__dial-needle { height: 12px; top: -2px; }
 
   .boombox__freq-btns {
     flex-direction: column;
@@ -2326,10 +2340,20 @@ section[id] {
     gap: 0.75rem;
   }
 
+  .destinos__video-wrap {
+    aspect-ratio: 16 / 9;
+    width: 100%;
+  }
+
+  .destinos__video {
+    max-height: none;
+    height: 100%;
+  }
+
   .destinos__fotos {
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(4, auto);
-    gap: 0.5rem;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 0.4rem;
   }
 
   .destinos__foto-frame {
