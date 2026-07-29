@@ -104,13 +104,6 @@
       <!-- Right controls -->
       <div class="nav__controls">
 
-        <!-- Language toggle -->
-        <div class="nav__lang" role="group" aria-label="Idioma">
-          <button class="nav__lang-opt active" data-lang="es" aria-pressed="true">ES</button>
-          <span class="nav__lang-dot">·</span>
-          <button class="nav__lang-opt" data-lang="en" aria-pressed="false">EN</button>
-        </div>
-
         <!-- Mute button -->
         <button class="nav__mute" id="btn-mute" aria-label="Silenciar audio" aria-pressed="false">
           <span class="nav__mute-icon">
@@ -140,6 +133,13 @@
 
       </div><!-- /.nav__collapse -->
 
+      <!-- Language toggle — siempre visible -->
+      <div class="nav__lang" role="group" aria-label="Idioma">
+        <button class="nav__lang-opt active" data-lang="es" aria-pressed="true">ES</button>
+        <span class="nav__lang-dot">·</span>
+        <button class="nav__lang-opt" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+
       <button class="nav__hamburger" id="nav-hamburger" aria-label="Menú" aria-expanded="false">☰</button>
 
     </nav>
@@ -149,6 +149,9 @@
 
       <!-- A · Etiqueta de cinta -->
       <p class="hero__tape-label" data-es="◀◀&nbsp;&nbsp;CINTA 01 · LADO A&nbsp;&nbsp;▶▶" data-en="◀◀&nbsp;&nbsp;TAPE 01 · SIDE A&nbsp;&nbsp;▶▶">◀◀&nbsp;&nbsp;CINTA 01 · LADO A&nbsp;&nbsp;▶▶</p>
+
+      <!-- Backdrop TV fullscreen -->
+      <div class="tv__backdrop" id="tv-backdrop"></div>
 
       <!-- B · TV Sony Trinitron -->
       <div class="tv" id="hero-tv" role="button" tabindex="0" aria-label="Reproducir showreel">
@@ -160,6 +163,11 @@
               <span class="tv__play-prompt" aria-hidden="true">▶ PLAY</span>
               <div class="tv__playing-overlay" aria-hidden="true">
                 SHOWREEL<br>CARGANDO...
+              </div>
+              <video class="tv__video" id="tv-video" preload="none" playsinline></video>
+              <div class="tv__video-controls" id="tv-video-controls" aria-hidden="true">
+                <button class="tv__ctrl-btn" id="tv-play-pause" aria-label="Play/Pausa">⏸</button>
+                <button class="tv__ctrl-btn" id="tv-close" aria-label="Cerrar">✕ CERRAR</button>
               </div>
             </div>
           </div>
@@ -182,16 +190,14 @@
       <div class="hero__text">
         <h1 class="hero__name">Ignacio Ancilletta</h1>
         <p class="hero__role" data-es="Estrategia Digital · Producción Audiovisual · Buenos Aires · 2026" data-en="Digital Strategist · Audiovisual Producer · Buenos Aires · 2026">Estrategia Digital · Producción Audiovisual · Buenos Aires · 2026</p>
-        <p class="hero__tagline" data-es=""El lente que tu marca necesita."" data-en=""The lens your brand needs."">"El lente que tu marca necesita."</p>
         <div class="hero__tags">
           <span class="hero__tag" data-es="Estrategia Digital" data-en="Digital Strategy">Estrategia Digital</span>
           <span class="hero__tag" data-es="Producción Audiovisual" data-en="Audiovisual Production">Producción Audiovisual</span>
           <span class="hero__tag" data-es="Dirección Creativa" data-en="Creative Direction">Dirección Creativa</span>
           <span class="hero__tag">Community Manager</span>
-          <span class="hero__tag" data-es="Equipo Propio" data-en="Own Team">Equipo Propio</span>
         </div>
         <div class="hero__ctas">
-          <a href="#works" class="btn btn--primary" data-es="▶ Ver Showreel" data-en="▶ See Showreel">▶ Ver Showreel</a>
+          <a href="#" class="btn btn--primary" id="btn-showreel" data-es="▶ Ver Showreel" data-en="▶ See Showreel">▶ Ver Showreel</a>
           <a href="#works" class="btn btn--outline" data-es="→ Ver Trabajos" data-en="→ See Work">→ Ver Trabajos</a>
         </div>
       </div>
@@ -329,15 +335,15 @@
                 <span class="cassette__brand">TDK</span>
                 <span class="cassette__type">SA·X90</span>
               </div>
-              <div class="cassette__window">
-                <div class="cassette__reel"></div>
-                <div class="cassette__reel"></div>
-              </div>
               <div class="cassette__label">
                 <span class="cassette__label-num">01</span>
                 <span class="cassette__label-title">Doble Doble</span>
                 <span class="cassette__label-star">★</span>
-                <span class="cassette__label-role" data-es="Community Manager · Asistente de Producción" data-en="Community Manager · Production Assistant">Community Manager · Asistente de Producción</span>
+                <span class="cassette__label-role" data-es="Community Manager — 2023-2025" data-en="Community Manager — 2023-2025">Community Manager — 2023-2025</span>
+              </div>
+              <div class="cassette__window">
+                <div class="cassette__reel"></div>
+                <div class="cassette__reel"></div>
               </div>
               <div class="cassette__holes">
                 <div class="cassette__hole"></div>
@@ -347,7 +353,7 @@
             </div>
             <div class="cassette__face cassette__face--back">
               <p class="cassette__back-num">01 · Doble Doble ★</p>
-              <p class="cassette__back-role" data-es="Community Manager · Asistente de Producción" data-en="Community Manager · Production Assistant">Community Manager · Asistente de Producción</p>
+              <p class="cassette__back-role" data-es="Community Manager — 2023-2025" data-en="Community Manager — 2023-2025">Community Manager — 2023-2025</p>
               <div class="cassette__back-media">
                 <p class="cassette__back-text" data-es="Gestión integral de contenido para plataforma NBA en Instagram y TikTok. Redacción de copys, planificación editorial y edición de reels y formatos verticales en un entorno de publicación constante y alta exigencia." data-en="Full content management for an NBA platform on Instagram and TikTok. Copywriting, editorial planning and editing of reels and vertical formats in a high-demand publishing environment.">Gestión integral de contenido para plataforma NBA en Instagram y TikTok. Redacción de copys, planificación editorial y edición de reels y formatos verticales en un entorno de publicación constante y alta exigencia.</p>
               </div>
@@ -357,22 +363,22 @@
         </article>
 
         <!-- Cassette 02 · MAXELL -->
-        <article class="cassette cassette--maxell" tabindex="0" aria-label="Action Coach - Project Manager">
+        <article class="cassette cassette--maxell" tabindex="0" aria-label="Action Coach - Gestión Integral">
           <div class="cassette__inner">
             <div class="cassette__face cassette__face--front">
               <div class="cassette__strip cassette__strip--maxell">
                 <span class="cassette__brand">MAXELL</span>
                 <span class="cassette__type">UDII·90</span>
               </div>
-              <div class="cassette__window">
-                <div class="cassette__reel"></div>
-                <div class="cassette__reel"></div>
-              </div>
               <div class="cassette__label cassette__label--maxell">
                 <span class="cassette__label-num">02</span>
                 <span class="cassette__label-title">Action Coach</span>
                 <span class="cassette__label-star">★</span>
-                <span class="cassette__label-role">Project Manager</span>
+                <span class="cassette__label-role" data-es="Gestión Integral — 2024-Presente" data-en="Full Management — 2024-Present">Gestión Integral — 2024-Presente</span>
+              </div>
+              <div class="cassette__window">
+                <div class="cassette__reel"></div>
+                <div class="cassette__reel"></div>
               </div>
               <div class="cassette__holes">
                 <div class="cassette__hole"></div>
@@ -382,9 +388,44 @@
             </div>
             <div class="cassette__face cassette__face--back">
               <p class="cassette__back-num">02 · Action Coach ★</p>
-              <p class="cassette__back-role">Project Manager</p>
+              <p class="cassette__back-role" data-es="Gestión Integral — 2024-Presente" data-en="Full Management — 2024-Present">Gestión Integral — 2024-Presente</p>
               <div class="cassette__back-media">
                 <p class="cassette__back-text" data-es="Planificación y gestión de contenidos para ActionCOACH, líder en coaching de PYMES. Coordinación de producción, gestión de campañas en ZOHO y responsable del área comercial y cierre de leads." data-en="Content planning and management for ActionCOACH, leader in SME coaching. Production coordination, ZOHO campaign management and responsible for the commercial area and lead closing.">Planificación y gestión de contenidos para ActionCOACH, líder en coaching de PYMES. Coordinación de producción, gestión de campañas en ZOHO y responsable del área comercial y cierre de leads.</p>
+              </div>
+              <p class="cassette__back-flip" data-es="↺ Flip para volver" data-en="↺ Flip to go back">↺ Flip para volver</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Cassette 03 · GLORIA MUNDI -->
+        <article class="cassette cassette--gloriamundi" tabindex="0" aria-label="FIFA: Chasing The Dream - Investigador de Archivo">
+          <div class="cassette__inner">
+            <div class="cassette__face cassette__face--front">
+              <div class="cassette__strip cassette__strip--gloriamundi">
+                <span class="cassette__brand">GLORIA MUNDI</span>
+                <span class="cassette__type">HGX·90</span>
+              </div>
+              <div class="cassette__label cassette__label--gloriamundi">
+                <span class="cassette__label-num">03</span>
+                <span class="cassette__label-title">FIFA: Chasing The Dream</span>
+                <span class="cassette__label-star">★</span>
+                <span class="cassette__label-role" data-es="Investigador de Archivo · Coordinador ESPN/FIFA — 2026" data-en="Archive Researcher · ESPN/FIFA Coordinator — 2026">Investigador de Archivo · Coordinador ESPN/FIFA — 2026</span>
+              </div>
+              <div class="cassette__window">
+                <div class="cassette__reel"></div>
+                <div class="cassette__reel"></div>
+              </div>
+              <div class="cassette__holes">
+                <div class="cassette__hole"></div>
+                <div class="cassette__hole"></div>
+                <div class="cassette__hole"></div>
+              </div>
+            </div>
+            <div class="cassette__face cassette__face--back">
+              <p class="cassette__back-num">03 · FIFA: Chasing The Dream ★</p>
+              <p class="cassette__back-role" data-es="Investigador de Archivo · Coordinador ESPN/FIFA — 2026" data-en="Archive Researcher · ESPN/FIFA Coordinator — 2026">Investigador de Archivo · Coordinador ESPN/FIFA — 2026</p>
+              <div class="cassette__back-media">
+                <p class="cassette__back-text" data-es="Investigador de Archivo y Coordinador entre ESPN/FIFA y el equipo de posproducción en el proyecto documental &quot;FIFA: Chasing The Dream&quot;, de la productora Gloria Mundi." data-en="Archive Researcher and Coordinator between ESPN/FIFA and the post-production team on the documentary project &quot;FIFA: Chasing The Dream&quot;, produced by Gloria Mundi.">Investigador de Archivo y Coordinador entre ESPN/FIFA y el equipo de posproducción en el proyecto documental "FIFA: Chasing The Dream", de la productora Gloria Mundi.</p>
               </div>
               <p class="cassette__back-flip" data-es="↺ Flip para volver" data-en="↺ Flip to go back">↺ Flip para volver</p>
             </div>
@@ -411,32 +452,58 @@
 
       <ol class="trabajos__list">
         <li class="trabajos__item">
-          <div class="trabajos__row"><span class="trabajos__num">01</span><span class="trabajos__sep">·</span><span class="trabajos__name">Paseo Houssay</span><span class="trabajos__role" data-es="Community Manager" data-en="Community Manager">Community Manager</span><span class="trabajos__year">2023–presente</span><span class="trabajos__arrow">↓</span></div>
-          <p class="trabajos__desc" data-es="Manejo integral de redes sociales. Edición, redacción y diseño dentro de las pautas de la marca. 2023–2026." data-en="Full social media management. Editing, copywriting and design within brand guidelines. 2023–2026.">Manejo integral de redes sociales. Edición, redacción y diseño dentro de las pautas de la marca. 2023–2026.</p>
+          <div class="trabajos__row"><span class="trabajos__num">01</span><span class="trabajos__sep">·</span><span class="trabajos__name">Doble Doble</span><span class="trabajos__role" data-es="Community Manager" data-en="Community Manager">Community Manager</span><span class="trabajos__year">2023-2025</span><a href="trabajo-doble-doble.html" class="trabajos__more" data-es="Ver más →" data-en="See more →">Ver más →</a><span class="trabajos__arrow">↓</span></div>
+          <div class="trabajos__body">
+            <p class="trabajos__desc" data-es="Gestión integral de contenido para plataforma NBA en Instagram y TikTok. Redacción de copys, planificación editorial y edición de reels y formatos verticales en un entorno de publicación constante y alta exigencia." data-en="Full content management for an NBA platform on Instagram and TikTok. Copywriting, editorial planning and editing of reels and vertical formats in a high-demand publishing environment.">Gestión integral de contenido para plataforma NBA en Instagram y TikTok. Redacción de copys, planificación editorial y edición de reels y formatos verticales en un entorno de publicación constante y alta exigencia.</p>
+          </div>
         </li>
         <li class="trabajos__item">
-          <div class="trabajos__row"><span class="trabajos__num">02</span><span class="trabajos__sep">·</span><span class="trabajos__name">Hay Motivo</span><span class="trabajos__role" data-es="Filmmaker" data-en="Filmmaker">Filmmaker</span><span class="trabajos__year">2023</span><span class="trabajos__arrow">↓</span></div>
-          <p class="trabajos__desc" data-es="Producción de la película y el espacio &quot;Detrás del Motivo&quot;. Acompañamiento en comunicación y difusión del proyecto." data-en="Production of the film and the space 'Behind the Motive'. Support in communication and project outreach.">Producción de la película y el espacio "Detrás del Motivo". Acompañamiento en comunicación y difusión del proyecto.</p>
+          <div class="trabajos__row"><span class="trabajos__num">02</span><span class="trabajos__sep">·</span><span class="trabajos__name">Action Coach</span><span class="trabajos__role" data-es="Gestión Integral" data-en="Full Management">Gestión Integral</span><span class="trabajos__year">2024-Presente</span><a href="trabajo-accion-coach.html" class="trabajos__more" data-es="Ver más →" data-en="See more →">Ver más →</a><span class="trabajos__arrow">↓</span></div>
+          <div class="trabajos__body">
+            <p class="trabajos__desc" data-es="Planificación y gestión de contenidos para ActionCOACH, líder en coaching de PYMES. Coordinación de producción, gestión de campañas en ZOHO y responsable del área comercial y cierre de leads." data-en="Content planning and management for ActionCOACH, leader in SME coaching. Production coordination, ZOHO campaign management and responsible for the commercial area and lead closing.">Planificación y gestión de contenidos para ActionCOACH, líder en coaching de PYMES. Coordinación de producción, gestión de campañas en ZOHO y responsable del área comercial y cierre de leads.</p>
+          </div>
         </li>
         <li class="trabajos__item">
-          <div class="trabajos__row"><span class="trabajos__num">03</span><span class="trabajos__sep">·</span><span class="trabajos__name">HP "Zeta"</span><span class="trabajos__role" data-es="Runner de Producción" data-en="Production Runner">Runner de Producción</span><span class="trabajos__year">2024</span><span class="trabajos__arrow">↓</span></div>
-          <p class="trabajos__desc" data-es="Runner de producción en el comercial de HP para WolfDen. Asistencia en rodaje y armado de sets con Kohler Studio." data-en="Production runner on the HP commercial for WolfDen. On-set assistance and set building with Kohler Studio.">Runner de producción en el comercial de HP para WolfDen. Asistencia en rodaje y armado de sets con Kohler Studio.</p>
+          <div class="trabajos__row"><span class="trabajos__num">03</span><span class="trabajos__sep">·</span><span class="trabajos__name">FIFA: Chasing The Dream</span><span class="trabajos__role" data-es="Investigador de Archivo · Coordinador ESPN/FIFA" data-en="Archive Researcher · ESPN/FIFA Coordinator">Investigador de Archivo · Coordinador ESPN/FIFA</span><span class="trabajos__year">2026</span><a href="trabajo-fifa-chasing-the-dream.html" class="trabajos__more" data-es="Ver más →" data-en="See more →">Ver más →</a><span class="trabajos__arrow">↓</span></div>
+          <div class="trabajos__body">
+            <p class="trabajos__desc" data-es="Investigador de Archivo y Coordinador entre ESPN/FIFA y el equipo de posproducción en el proyecto documental &quot;FIFA: Chasing The Dream&quot;, de la productora Gloria Mundi." data-en="Archive Researcher and Coordinator between ESPN/FIFA and the post-production team on the documentary project &quot;FIFA: Chasing The Dream&quot;, produced by Gloria Mundi.">Investigador de Archivo y Coordinador entre ESPN/FIFA y el equipo de posproducción en el proyecto documental "FIFA: Chasing The Dream", de la productora Gloria Mundi.</p>
+          </div>
         </li>
         <li class="trabajos__item">
-          <div class="trabajos__row"><span class="trabajos__num">04</span><span class="trabajos__sep">·</span><span class="trabajos__name">Memento</span><span class="trabajos__role" data-es="Brandowner" data-en="Brand Owner">Brandowner</span><span class="trabajos__year">2023</span><span class="trabajos__arrow">↓</span></div>
-          <p class="trabajos__desc" data-es="Desarrollo de marca desde cero — identidad visual, contenido, sesiones fotográficas y gestión de Instagram y tienda online." data-en="Brand development from scratch — visual identity, content, photo sessions and management of Instagram and online store.">Desarrollo de marca desde cero — identidad visual, contenido, sesiones fotográficas y gestión de Instagram y tienda online.</p>
+          <div class="trabajos__row"><span class="trabajos__num">04</span><span class="trabajos__sep">·</span><span class="trabajos__name">Paseo Houssay</span><span class="trabajos__role" data-es="Community Manager" data-en="Community Manager">Community Manager</span><span class="trabajos__year">2023–2026</span><a href="trabajo-paseo-houssay.html" class="trabajos__more" data-es="Ver más →" data-en="See more →">Ver más →</a><span class="trabajos__arrow">↓</span></div>
+          <div class="trabajos__body">
+            <p class="trabajos__desc" data-es="Manejo integral de redes sociales. Edición, redacción y diseño dentro de las pautas de la marca. 2023–2026." data-en="Full social media management. Editing, copywriting and design within brand guidelines. 2023–2026.">Manejo integral de redes sociales. Edición, redacción y diseño dentro de las pautas de la marca. 2023–2026.</p>
+          </div>
         </li>
         <li class="trabajos__item">
-          <div class="trabajos__row"><span class="trabajos__num">05</span><span class="trabajos__sep">·</span><span class="trabajos__name">Puro Diseño</span><span class="trabajos__role" data-es="Filmmaker" data-en="Filmmaker">Filmmaker</span><span class="trabajos__year">2025</span><span class="trabajos__arrow">↓</span></div>
-          <p class="trabajos__desc" data-es="Cobertura audiovisual del evento de diseño más importante de Argentina." data-en="Audiovisual coverage of Argentina's most important design event.">Cobertura audiovisual del evento de diseño más importante de Argentina.</p>
+          <div class="trabajos__row"><span class="trabajos__num">05</span><span class="trabajos__sep">·</span><span class="trabajos__name">Hay Motivo</span><span class="trabajos__role" data-es="Filmmaker" data-en="Filmmaker">Filmmaker</span><span class="trabajos__year">2024–2025</span><a href="trabajo-hay-motivo.html" class="trabajos__more" data-es="Ver más →" data-en="See more →">Ver más →</a><span class="trabajos__arrow">↓</span></div>
+          <div class="trabajos__body">
+            <p class="trabajos__desc" data-es="Producción de la película y el espacio &quot;Detrás del Motivo&quot;. Acompañamiento en comunicación y difusión del proyecto." data-en="Production of the film and the space 'Behind the Motive'. Support in communication and project outreach.">Producción de la película y el espacio "Detrás del Motivo". Acompañamiento en comunicación y difusión del proyecto.</p>
+          </div>
         </li>
         <li class="trabajos__item">
-          <div class="trabajos__row"><span class="trabajos__num">06</span><span class="trabajos__sep">·</span><span class="trabajos__name">La Cúpula</span><span class="trabajos__role" data-es="Filmmaker · Estudio Pacífica" data-en="Filmmaker · Estudio Pacífica">Filmmaker · Estudio Pacífica</span><span class="trabajos__year">2024</span><span class="trabajos__arrow">↓</span></div>
-          <p class="trabajos__desc" data-es="Producción audiovisual para muestra en Estudio Pacifica. Fotografía, video y edición con corrección de color." data-en="Audiovisual production for an exhibition at Estudio Pacifica. Photography, video and color graded editing.">Producción audiovisual para muestra en Estudio Pacifica. Fotografía, video y edición con corrección de color.</p>
+          <div class="trabajos__row"><span class="trabajos__num">06</span><span class="trabajos__sep">·</span><span class="trabajos__name">HP "Zeta"</span><span class="trabajos__role" data-es="Runner de Producción" data-en="Production Runner">Runner de Producción</span><span class="trabajos__year">2024</span><a href="trabajo-hp-zeta.html" class="trabajos__more" data-es="Ver más →" data-en="See more →">Ver más →</a><span class="trabajos__arrow">↓</span></div>
+          <div class="trabajos__body">
+            <p class="trabajos__desc" data-es="Runner de producción en el comercial de HP para WolfDen. Asistencia en rodaje y armado de sets con Kohler Studio." data-en="Production runner on the HP commercial for WolfDen. On-set assistance and set building with Kohler Studio.">Runner de producción en el comercial de HP para WolfDen. Asistencia en rodaje y armado de sets con Kohler Studio.</p>
+          </div>
         </li>
         <li class="trabajos__item">
-          <div class="trabajos__row"><span class="trabajos__num">07</span><span class="trabajos__sep">·</span><span class="trabajos__name">Eggpertise</span><span class="trabajos__role" data-es="Filmmaker" data-en="Filmmaker">Filmmaker</span><span class="trabajos__year">2025</span><span class="trabajos__arrow">↓</span></div>
-          <p class="trabajos__desc" data-es="Cobertura audiovisual en la Expo Avícola 2025. Filmación, fotografía de productos y entrevistas al equipo técnico." data-en="Audiovisual coverage at Expo Avícola 2025. Filming, product photography and interviews with the technical team.">Cobertura audiovisual en la Expo Avícola 2025. Filmación, fotografía de productos y entrevistas al equipo técnico.</p>
+          <div class="trabajos__row"><span class="trabajos__num">07</span><span class="trabajos__sep">·</span><span class="trabajos__name">Memento</span><span class="trabajos__role" data-es="Brandowner" data-en="Brand Owner">Brandowner</span><span class="trabajos__year">2023</span><a href="trabajo-memento.html" class="trabajos__more" data-es="Ver más →" data-en="See more →">Ver más →</a><span class="trabajos__arrow">↓</span></div>
+          <div class="trabajos__body">
+            <p class="trabajos__desc" data-es="Desarrollo de marca desde cero — identidad visual, contenido, sesiones fotográficas y gestión de Instagram y tienda online." data-en="Brand development from scratch — visual identity, content, photo sessions and management of Instagram and online store.">Desarrollo de marca desde cero — identidad visual, contenido, sesiones fotográficas y gestión de Instagram y tienda online.</p>
+          </div>
+        </li>
+        <li class="trabajos__item">
+          <div class="trabajos__row"><span class="trabajos__num">08</span><span class="trabajos__sep">·</span><span class="trabajos__name">Puro Diseño</span><span class="trabajos__role" data-es="Filmmaker" data-en="Filmmaker">Filmmaker</span><span class="trabajos__year">2025</span><a href="trabajo-puro-diseno.html" class="trabajos__more" data-es="Ver más →" data-en="See more →">Ver más →</a><span class="trabajos__arrow">↓</span></div>
+          <div class="trabajos__body">
+            <p class="trabajos__desc" data-es="Cobertura audiovisual del evento de diseño más importante de Argentina." data-en="Audiovisual coverage of Argentina's most important design event.">Cobertura audiovisual del evento de diseño más importante de Argentina.</p>
+          </div>
+        </li>
+        <li class="trabajos__item">
+          <div class="trabajos__row"><span class="trabajos__num">09</span><span class="trabajos__sep">·</span><span class="trabajos__name">La Cúpula</span><span class="trabajos__role" data-es="Filmmaker · Estudio Pacífica" data-en="Filmmaker · Estudio Pacífica">Filmmaker · Estudio Pacífica</span><span class="trabajos__year">2024</span><a href="trabajo-la-cupula.html" class="trabajos__more" data-es="Ver más →" data-en="See more →">Ver más →</a><span class="trabajos__arrow">↓</span></div>
+          <div class="trabajos__body">
+            <p class="trabajos__desc" data-es="Producción audiovisual para muestra en Estudio Pacifica. Fotografía, video y edición con corrección de color." data-en="Audiovisual production for an exhibition at Estudio Pacifica. Photography, video and color graded editing.">Producción audiovisual para muestra en Estudio Pacifica. Fotografía, video y edición con corrección de color.</p>
+          </div>
         </li>
       </ol>
 
@@ -483,9 +550,9 @@
             <!-- Sur América -->
             <path d="M198,218 L248,216 L278,238 L288,282 L280,334 L262,368 L238,386 L212,372 L198,342 L188,292 L190,248 Z"/>
             <!-- Europa -->
-            <path d="M453,118 L492,104 L538,106 L564,124 L558,154 L538,170 L508,172 L478,162 L458,147 Z"/>
+            <path d="M443,128 L484,103 L543,101 L583,127 L575,168 L553,190 L516,196 L476,182 L452,160 Z"/>
             <!-- África -->
-            <path d="M456,178 L508,168 L556,176 L576,214 L570,274 L554,332 L524,356 L494,358 L464,334 L448,284 L443,228 Z"/>
+            <path d="M458,200 L508,190 L556,200 L574,238 L568,298 L552,356 L522,378 L492,380 L462,356 L446,306 L441,248 Z"/>
             <!-- Asia continental -->
             <path d="M543,93 L622,73 L746,76 L848,93 L882,133 L872,173 L828,193 L762,204 L696,198 L634,183 L578,163 L543,138 Z"/>
             <!-- SE Asia -->
@@ -549,6 +616,22 @@
               <image href="https://flagcdn.com/w40/jp.png" x="840" y="162" width="32" height="20" class="viajes__flag" preserveAspectRatio="xMidYMid slice"/>
               <text x="856" y="155" class="viajes__label" text-anchor="middle">JPN</text>
             </g>
+            <g class="viajes__dest" data-dest="holanda" tabindex="0" role="button" aria-label="Holanda">
+              <image href="https://flagcdn.com/w40/nl.png" x="444" y="128" width="32" height="20" class="viajes__flag" preserveAspectRatio="xMidYMid slice"/>
+              <text x="460" y="123" class="viajes__label" text-anchor="middle">NLD</text>
+            </g>
+            <g class="viajes__dest" data-dest="eslovaquia" tabindex="0" role="button" aria-label="Eslovaquia">
+              <image href="https://flagcdn.com/w40/sk.png" x="484" y="142" width="32" height="20" class="viajes__flag" preserveAspectRatio="xMidYMid slice"/>
+              <text x="500" y="137" class="viajes__label" text-anchor="middle">SVK</text>
+            </g>
+            <g class="viajes__dest" data-dest="hungria" tabindex="0" role="button" aria-label="Hungría">
+              <image href="https://flagcdn.com/w40/hu.png" x="514" y="156" width="32" height="20" class="viajes__flag" preserveAspectRatio="xMidYMid slice"/>
+              <text x="530" y="151" class="viajes__label" text-anchor="middle">HUN</text>
+            </g>
+            <g class="viajes__dest" data-dest="macedonia" tabindex="0" role="button" aria-label="Macedonia">
+              <image href="https://flagcdn.com/w40/mk.png" x="490" y="172" width="32" height="20" class="viajes__flag" preserveAspectRatio="xMidYMid slice"/>
+              <text x="506" y="167" class="viajes__label" text-anchor="middle">MKD</text>
+            </g>
           </g>
 
           <!-- Destinos PRÓXIMAMENTE Europa (puntos tenues, sin link) -->
@@ -565,7 +648,7 @@
             <circle cx="470" cy="120" r="3" fill="none" stroke="#6B5D4F" stroke-width="1"/>
             <circle cx="462" cy="140" r="3" fill="none" stroke="#6B5D4F" stroke-width="1"/>
             <circle cx="458" cy="153" r="3" fill="none" stroke="#6B5D4F" stroke-width="1"/>
-            <text x="540" y="175" class="viajes__label viajes__label--soon" text-anchor="start" opacity="0.5" data-es="PRÓXIMAMENTE" data-en="COMING SOON">PRÓXIMAMENTE</text>
+            <text x="590" y="162" class="viajes__label viajes__label--soon" text-anchor="start" opacity="0.5" data-es="PRÓXIMAMENTE" data-en="COMING SOON">PRÓXIMAMENTE</text>
           </g>
 
         </svg>
@@ -672,6 +755,15 @@
         <span><span class="nav__rec-dot"></span>REC · READY</span>
       </div>
     </section>
+
+    <!-- Modal Showreel (fallback) -->
+    <div class="showreel-modal" id="showreel-modal" aria-hidden="true" role="dialog" aria-label="Showreel">
+      <div class="showreel-modal__backdrop" id="showreel-modal-backdrop"></div>
+      <div class="showreel-modal__inner">
+        <button class="showreel-modal__close" id="showreel-modal-close" aria-label="Cerrar">✕ CERRAR</button>
+        <video class="showreel-modal__video" id="modal-video" src="assets/video/Portfolio.mp4" controls playsinline></video>
+      </div>
+    </div>
 
     <script src="js/main.js"></script>
   </body>

@@ -94,15 +94,110 @@ btnMute.addEventListener('click', (e) => {
   if (!audio.muted) startAudio();
 });
 
-// ── TV Trinitron · click para reproducir ────────────────────
-const tv = document.getElementById('hero-tv');
-if (tv) {
-  const toggleTV = () => tv.classList.toggle('tv--playing');
-  tv.addEventListener('click', toggleTV);
-  tv.addEventListener('keydown', e => {
-    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleTV(); }
+// ── TV Trinitron · Showreel ──────────────────────────────────
+const tv             = document.getElementById('hero-tv');
+const tvVideo        = document.getElementById('tv-video');
+const tvBackdrop     = document.getElementById('tv-backdrop');
+const btnShowreel    = document.getElementById('btn-showreel');
+const tvPlayPause    = document.getElementById('tv-play-pause');
+const tvClose        = document.getElementById('tv-close');
+const showreelModal  = document.getElementById('showreel-modal');
+const modalVideo     = document.getElementById('modal-video');
+const modalClosBtn   = document.getElementById('showreel-modal-close');
+const modalBackdrop  = document.getElementById('showreel-modal-backdrop');
+
+const SHOWREEL_SRC = 'assets/video/Portfolio.mp4';
+
+function openShowreelModal() {
+  showreelModal.classList.add('open');
+  showreelModal.setAttribute('aria-hidden', 'false');
+  modalVideo.play().catch(() => {});
+}
+
+function closeShowreelModal() {
+  showreelModal.classList.remove('open');
+  showreelModal.setAttribute('aria-hidden', 'true');
+  modalVideo.pause();
+  modalVideo.currentTime = 0;
+}
+
+function stopTV() {
+  if (!tv) return;
+  tv.classList.remove('tv--playing', 'tv--has-video');
+  if (tvBackdrop) tvBackdrop.classList.remove('active');
+  tvVideo.pause();
+  tvVideo.currentTime = 0;
+  tvVideo.removeAttribute('src');
+  tvVideo.load();
+  if (tvPlayPause) tvPlayPause.textContent = '▶';
+}
+
+function startShowreel() {
+  if (!tv || !tvVideo) return;
+  tvVideo.src = SHOWREEL_SRC;
+  tv.classList.add('tv--playing', 'tv--has-video');
+  if (tvBackdrop) tvBackdrop.classList.add('active');
+  if (tvPlayPause) tvPlayPause.textContent = '⏸';
+
+  tvVideo.play().catch(() => {});
+}
+
+if (tvVideo) {
+  tvVideo.addEventListener('error', () => {
+    stopTV();
+    openShowreelModal();
   });
 }
+
+if (btnShowreel) {
+  btnShowreel.addEventListener('click', e => {
+    e.preventDefault();
+    startShowreel();
+  });
+}
+
+if (tv) {
+  tv.addEventListener('click', () => {
+    if (!tv.classList.contains('tv--has-video')) startShowreel();
+  });
+  tv.addEventListener('keydown', e => {
+    if ((e.key === 'Enter' || e.key === ' ') && !tv.classList.contains('tv--has-video')) {
+      e.preventDefault();
+      startShowreel();
+    }
+  });
+}
+
+if (tvPlayPause) {
+  tvPlayPause.addEventListener('click', e => {
+    e.stopPropagation();
+    if (tvVideo.paused) {
+      tvVideo.play().catch(() => {});
+      tvPlayPause.textContent = '⏸';
+    } else {
+      tvVideo.pause();
+      tvPlayPause.textContent = '▶';
+    }
+  });
+}
+
+if (tvClose) {
+  tvClose.addEventListener('click', e => {
+    e.stopPropagation();
+    stopTV();
+  });
+}
+
+if (tvBackdrop) tvBackdrop.addEventListener('click', stopTV);
+if (modalClosBtn) modalClosBtn.addEventListener('click', closeShowreelModal);
+if (modalBackdrop) modalBackdrop.addEventListener('click', closeShowreelModal);
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    if (showreelModal && showreelModal.classList.contains('open')) closeShowreelModal();
+    else if (tv && tv.classList.contains('tv--has-video')) stopTV();
+  }
+});
 
 // ── Cassette flip ────────────────────────────────────────────
 document.querySelectorAll('.cassette').forEach(c => {
@@ -113,14 +208,15 @@ document.querySelectorAll('.cassette').forEach(c => {
 
 // ── Trabajos · expand ────────────────────────────────────────
 document.querySelectorAll('.trabajos__item').forEach(item => {
-  item.querySelector('.trabajos__row').addEventListener('click', () => {
+  item.querySelector('.trabajos__row').addEventListener('click', (e) => {
+    if (e.target.closest('.trabajos__more')) return;
     item.classList.toggle('open');
   });
 });
 
 // ── Viajes · banderas tooltip + navegación ───────────────────
 const viajesNombres = {
-  australia: 'Australia',
+  australia:  'Australia',
   indonesia:  'Indonesia',
   singapur:   'Singapur',
   malasia:    'Malasia',
@@ -128,6 +224,10 @@ const viajesNombres = {
   vietnam:    'Vietnam',
   china:      'China',
   japon:      'Japón',
+  holanda:    'Holanda',
+  eslovaquia: 'Eslovaquia',
+  hungria:    'Hungría',
+  macedonia:  'Macedonia',
 };
 
 const viajesMapWrap = document.querySelector('.viajes__map-wrap');
