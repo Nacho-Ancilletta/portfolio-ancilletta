@@ -2270,6 +2270,20 @@ section[id] {
   filter: none;
 }
 
+.trabajo__media-soon {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  color: var(--color-secondary);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  opacity: 0.6;
+}
+
 .destinos__not-found {
   text-align: center;
   padding: 4rem 2rem;
